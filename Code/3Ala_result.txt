@@ -1,0 +1,19 @@
+Pipeline Results
+ 
+Mutation
+Position|	Old aa	|	New aa	 
+3	|	Val	|	Ala
+
+
+5 Angstrom zone Around the aa
+Zone:	540, 402, 541, 544, 702, 3, 4, 5
+aaImportant:	402
+
+ 
+Score après zone:0.5
+
+
+Rotamer
+No rotamer found 
+
+score_tot = 0.5

@@ -1,0 +1,14 @@
+Pipeline Results
+ 
+Mutation
+Position|	Old aa	|	New aa	 
+275	|	Ala	|	Tyr
+
+
+5 Angstrom zone Around the aa
+Zone:	
+aaImportant:	
+
+ 
+Score après zone:2.0
+

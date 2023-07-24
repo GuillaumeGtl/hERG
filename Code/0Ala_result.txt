@@ -1,0 +1,14 @@
+Pipeline Results
+ 
+Mutation
+Position|	Old aa	|	New aa	 
+0	|	Ala	|	Ala
+
+
+5 Angstrom zone Around the aa
+Zone:	
+aaImportant:	
+
+ 
+Score après zone:0.0
+
