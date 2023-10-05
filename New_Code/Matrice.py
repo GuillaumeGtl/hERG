@@ -18,16 +18,16 @@ def matrices(FILE):
             i+=1
             if i==1:
                 for cell in row[1:]:
-                    matrice[cell.value]={}
+                    matrice[cell.value.strip()]={}
             else:
                 j=0
                 aa = ""
                 for cell in row:
                     j += 1
                     if j == 1:
-                        aa = cell.value
+                        aa = cell.value.strip()
                     else:
-                        matrice[ws[cell.column_letter+"1"].value][aa] = cell.value
+                        matrice[ws[cell.column_letter+"1"].value.strip()][aa] = cell.value
         L.append(matrice)
     return L
 
