@@ -75,12 +75,12 @@ f.write(str(proba_rotamer)+"\n")
 
 #if a proba of a rotamer is >= ROTA_PROB_THRESHOLD % it's considered,
 #if no rotamers have a probability above ROTA_PROB_THRESHOLD %, we consider only the MIN_NUM_ROTA firsts
-nb_of_interest_rot = 0
-for e in proba_rotamer :
-    if e >= ROTA_PROB_THRESHOLD:
-        nb_of_interest_rot += 1
+nb_of_interest_rot = len([e for e in proba_rotamer if e > ROTA_PROB_THRESHOLD])
 if not nb_of_interest_rot:
     nb_of_interest_rot = MIN_NUM_ROTA
+
+if not len(proba_rotamer):
+    nb_of_interest_rot = 0
 f.write(str(nb_of_interest_rot)+"\n")
 
 

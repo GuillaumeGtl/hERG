@@ -1,0 +1,7 @@
+residue : 
+ALA 673.A
+proba rota : 
+[]
+0
+[]
+[]
