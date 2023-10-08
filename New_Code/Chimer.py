@@ -6,11 +6,13 @@ from chimera.specifier import evalSpec
 from Rotamers import getRotamers
 import os
 
-newAA = "ALA"
+newAA = "PHE"
 posAA = "673"
 pdb_file = "C:/Users/Guillaume/Desktop/hERG/New_Code/hERG.pdb"
 ROTA_PROB_THRESHOLD = 0.1
 MIN_NUM_ROTA = 3
+NUM_MINIM_STEP = 10
+minimize = True
 
 
 ## get the list of residues in the 5 angstom zone around selected residue
@@ -42,21 +44,33 @@ def clashes(file,residue_index):
 def get_rota(AA,pos):
     rc("swapaa "+AA+" :"+pos+".a")
     r = evalSpec(" :"+pos+".a").residues()[0]
-    try : 
+    try :
         (flag,rotamers) = getRotamers(r)
+        f.write("oui\n")
     except :
+        f.write("non\n")
         return r,[]
+    f.write("test\n")
+    f.write(str(r)+"\n")
     proba_rotamer = []
     for i in range(len(rotamers)):
         proba_rotamer.append(rotamers[i].rotamerProb)
     return r,proba_rotamer
-    
+
+## get the list of clashes from a rotamer in a file   
 def clash(AA,pos,rot):
-    #chimera.openModels.open(pdb_file)
     rc("swapaa "+AA+" :"+pos+".a criteria "+rot)
     rc("addh spec sel")
     rc("select :"+pos+".a za<5")
     rc("findclash sel test self ignoreIntraRes true colorClashes true clashColor red saveFile clashes{}.txt namingStyle simple summary true log true".format(rot))
+
+## minimise and 
+def mini(AA,pos,step,rot):
+    rc("swapaa "+AA+" :"+pos+".a criteria "+rot)
+    rc("addh spec sel")
+    rc("select :"+pos+".a za<5")
+    rc("minimize spec sel nogui True nsteps {} cgsteps 0 ".format(step))
+    rc("findclash sel test self ignoreIntraRes true colorClashes true clashColor red saveFile clashes_post{}.txt namingStyle simple summary true log true".format(rot))
 
 
 
@@ -65,14 +79,12 @@ f = open("output.txt","w")
 chimera.openModels.open(pdb_file)
 r,proba_rotamer = get_rota(newAA,posAA)
 
-
 ## log
-
 f.write("residue : \n")
 f.write(str(r)+"\n")
 f.write("proba rota : \n")
 f.write(str(proba_rotamer)+"\n")
-
+rc("close session")
 #if a proba of a rotamer is >= ROTA_PROB_THRESHOLD % it's considered,
 #if no rotamers have a probability above ROTA_PROB_THRESHOLD %, we consider only the MIN_NUM_ROTA firsts
 nb_of_interest_rot = len([e for e in proba_rotamer if e > ROTA_PROB_THRESHOLD])
@@ -84,34 +96,31 @@ if not len(proba_rotamer):
 f.write(str(nb_of_interest_rot)+"\n")
 
 
-# get the numbers of clashes for each intersting rotamers, minimize the structure for each, and get the new number of clashes
+# get the numbers of clashes for each intersting rotamers
 clashes_of_rota = []
-clashes_of_rota_after = []
-
-rc("close session")
 chimera.openModels.open(pdb_file)
 for i in range(nb_of_interest_rot):
     clash(newAA,posAA,str(i+1))
     clashes_of_rota.append(clashes("clashes{}.txt".format(i+1),posAA))
+rc("close session")
 f.write(str(clashes_of_rota)+"\n")
 
-rc("close session")
-for i in range(nb_of_interest_rot):
-    if clashes_of_rota[i]:
-        chimera.openModels.open(pdb_file)
-        rc("select :"+posAA+".a za<5")
-        rc("minimize spec sel nogui True nsteps 10 cgsteps 0 ")
-        rc("findclash sel test self ignoreIntraRes true colorClashes true clashColor red saveFile clashes{}.txt namingStyle simple summary true log true".format(i+1))
-        clashes_of_rota_after.append(clashes("clashes{}.txt".format(i+1),posAA))
 
-f.write(str(clashes_of_rota_after))
+# if minimize, minimize the structure for each rotamer having clash, and get the new number of clashes
+if minimize : 
+    clashes_of_rota_after = []
+    for i in range(nb_of_interest_rot):
+        if clashes_of_rota[i]:
+            chimera.openModels.open(pdb_file)
+            mini(newAA,posAA,NUM_MINIM_STEP,str(i+1))
+            rc("close session")
+            clashes_of_rota_after.append(clashes("clashes_post{}.txt".format(i+1),posAA))
+        else:
+            clashes_of_rota_after.append(0)
+    f.write(str(clashes_of_rota_after))
 
 rc("stop")
 f.close()
-
-
-
-
 
 
 
