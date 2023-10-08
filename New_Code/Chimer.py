@@ -6,7 +6,7 @@ from chimera.specifier import evalSpec
 from Rotamers import getRotamers
 import os
 
-newAA = "PHE"
+newAA = "GLN"
 posAA = "673"
 pdb_file = "C:/Users/Guillaume/Desktop/hERG/New_Code/hERG.pdb"
 ROTA_PROB_THRESHOLD = 0.1
@@ -40,6 +40,7 @@ def clashes(file,residue_index):
             nb_of_clashes -= 1
     return nb_of_clashes
 
+## get the list of amino acids in contact from findclash output contact file
 def contacts(file,residue_index):
     contact_file = open(file,'r')
     content = contact_file.readlines()
@@ -69,7 +70,6 @@ def get_rota(AA,pos):
         (flag,rotamers) = getRotamers(r)
     except :
         return r,[]
-    f.write(str(r)+"\n")
     proba_rotamer = []
     for i in range(len(rotamers)):
         proba_rotamer.append(rotamers[i].rotamerProb)

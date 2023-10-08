@@ -1,0 +1,22 @@
+Allowed overlap: 0.6
+H-bond overlap reduction: 0.4
+Ignore contacts between atoms separated by 4 bonds or less
+Detect intra-residue contacts: False
+Detect intra-molecule contacts: True
+
+14 contacts
+atom1  atom2  overlap  distance
+TRP 705.A CZ2  GLN 673.A NE2  2.827  0.573
+TRP 705.A CH2  GLN 673.A NE2  2.424  0.976
+TRP 705.A CZ2  GLN 673.A CD   1.746  1.624
+GLN 673.A NE2  TRP 705.A CE2  1.525  1.725
+TRP 705.A CH2  GLN 673.A CD   1.317  2.053
+TRP 705.A CZ3  GLN 673.A NE2  1.312  2.088
+TRP 705.A CZ2  GLN 673.A CG   1.231  2.409
+TRP 705.A CE2  GLN 673.A CG   0.942  2.548
+GLY 669.A O    GLN 673.A CG   0.832  2.468
+TRP 705.A NE1  GLN 673.A CG   0.780  2.740
+GLN 673.A CD   TRP 705.A CE2  0.768  2.452
+GLN 673.A NE2  TRP 705.A CE3  0.713  2.687
+GLN 673.A NE2  TRP 705.A CD2  0.697  2.553
+TRP 705.A CH2  GLN 673.A OE1  0.601  2.579
