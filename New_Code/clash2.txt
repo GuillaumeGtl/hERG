@@ -6,4 +6,4 @@ Detect intra-molecule contacts: True
 
 1 contacts
 atom1  atom2  overlap  distance
-TRP 705.A CE2  PHE 673.A HD1  0.632  2.068
+TRP 705.A CE2  PHE 673.A HD1  0.622  2.078

@@ -40,17 +40,35 @@ def clashes(file,residue_index):
             nb_of_clashes -= 1
     return nb_of_clashes
 
+def contacts(file,residue_index):
+    contact_file = open(file,'r')
+    content = contact_file.readlines()
+    contact_file.close()
+    start = content.index("\n")
+    nb_of_contact = int(content[start+1].split()[0])
+    if not nb_of_contact:
+        return []
+    involved_residues = []
+    for ligne in content[start+3:]:
+        l = ligne.split()
+        contact = [l[1].split(".")[0],l[4].split(".")[0]]
+        if str(residue_index) in contact:
+            contact.pop(contact.index(residue_index))
+            remaining_residue = contact[0]
+            if remaining_residue not in involved_residues:
+                involved_residues.append(remaining_residue)
+    return involved_residues
+            
+
+            
 ## get probability of rotamers of amino acid "AA" at position "pos"
 def get_rota(AA,pos):
     rc("swapaa "+AA+" :"+pos+".a")
     r = evalSpec(" :"+pos+".a").residues()[0]
     try :
         (flag,rotamers) = getRotamers(r)
-        f.write("oui\n")
     except :
-        f.write("non\n")
         return r,[]
-    f.write("test\n")
     f.write(str(r)+"\n")
     proba_rotamer = []
     for i in range(len(rotamers)):
@@ -58,11 +76,11 @@ def get_rota(AA,pos):
     return r,proba_rotamer
 
 ## get the list of clashes from a rotamer in a file   
-def clash(AA,pos,rot):
+def clash(AA,pos,rot,overlap,allowance,name):
     rc("swapaa "+AA+" :"+pos+".a criteria "+rot)
     rc("addh spec sel")
     rc("select :"+pos+".a za<5")
-    rc("findclash sel test self ignoreIntraRes true colorClashes true clashColor red saveFile clashes{}.txt namingStyle simple summary true log true".format(rot))
+    rc("findclash sel test self overlapCutoff {} hbondAllowance {} ignoreIntraRes true colorClashes true clashColor red saveFile {}{}.txt namingStyle simple summary true log true".format(overlap,allowance,name,rot))
 
 ## minimise and 
 def mini(AA,pos,step,rot):
@@ -70,7 +88,7 @@ def mini(AA,pos,step,rot):
     rc("addh spec sel")
     rc("select :"+pos+".a za<5")
     rc("minimize spec sel nogui True nsteps {} cgsteps 0 ".format(step))
-    rc("findclash sel test self ignoreIntraRes true colorClashes true clashColor red saveFile clashes_post{}.txt namingStyle simple summary true log true".format(rot))
+    rc("findclash sel test self ignoreIntraRes true colorClashes true clashColor red saveFile clash_post{}.txt namingStyle simple summary true log true".format(rot))
 
 
 
@@ -96,14 +114,18 @@ if not len(proba_rotamer):
 f.write(str(nb_of_interest_rot)+"\n")
 
 
-# get the numbers of clashes for each intersting rotamers
+# get the numbers of clashes and contacts for each intersting rotamers
 clashes_of_rota = []
+contacts_of_rota = []
 chimera.openModels.open(pdb_file)
 for i in range(nb_of_interest_rot):
-    clash(newAA,posAA,str(i+1))
-    clashes_of_rota.append(clashes("clashes{}.txt".format(i+1),posAA))
+    clash(newAA,posAA,str(i+1),0.6,0.4,"clash")
+    clashes_of_rota.append(clashes("clash{}.txt".format(i+1),posAA))
+    clash(newAA,posAA,str(i+1),-0.4,0,"contact")
+    contacts_of_rota.append(contacts("contact{}.txt".format(i+1),posAA))
 rc("close session")
 f.write(str(clashes_of_rota)+"\n")
+f.write(str(contacts_of_rota)+"\n")
 
 
 # if minimize, minimize the structure for each rotamer having clash, and get the new number of clashes
@@ -114,10 +136,12 @@ if minimize :
             chimera.openModels.open(pdb_file)
             mini(newAA,posAA,NUM_MINIM_STEP,str(i+1))
             rc("close session")
-            clashes_of_rota_after.append(clashes("clashes_post{}.txt".format(i+1),posAA))
+            clashes_of_rota_after.append(clashes("clash_post{}.txt".format(i+1),posAA))
         else:
             clashes_of_rota_after.append(0)
     f.write(str(clashes_of_rota_after))
+
+
 
 rc("stop")
 f.close()
