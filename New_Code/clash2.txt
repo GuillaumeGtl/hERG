@@ -1,9 +1,0 @@
-Allowed overlap: 0.6
-H-bond overlap reduction: 0.4
-Ignore contacts between atoms separated by 4 bonds or less
-Detect intra-residue contacts: False
-Detect intra-molecule contacts: True
-
-1 contacts
-atom1  atom2  overlap  distance
-TRP 705.A CE2  PHE 673.A HD1  0.622  2.078
