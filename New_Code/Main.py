@@ -33,14 +33,13 @@ config["minimize"] = False
 
 
 # stockages des variables dans un fichier de configuration
-
 f = open("config.txt","w")
 f.write(str(config))
 f.close()
 
 
-
 #
+
 cmd = r'"%s" "%s"'%(config["path_chimera"],"C:/Users/Guillaume/Desktop/hERG/New_Code/Chimer.py")
 subprocess.run(cmd)
 
