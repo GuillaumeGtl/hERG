@@ -6,13 +6,18 @@ from chimera.specifier import evalSpec
 from Rotamers import getRotamers
 import os
 
-newAA = "GLN"
-posAA = "673"
-pdb_file = "C:/Users/Guillaume/Desktop/hERG/New_Code/hERG.pdb"
-ROTA_PROB_THRESHOLD = 0.1
-MIN_NUM_ROTA = 3
-NUM_MINIM_STEP = 10
-minimize = True
+f = open("config.txt","r")
+content = f.readlines()
+config = eval(content[0])
+
+
+newAA = config["newAA"]
+posAA = config["posAA"]
+pdb_file = config["pdb_file"]
+ROTA_PROB_THRESHOLD = config["ROTA_PROB_THRESHOLD"]
+MIN_NUM_ROTA = config["MIN_NUM_ROTA"]
+NUM_MINIM_STEP = config["NUM_MINIM_STEP"]
+minimize = config["minimize"]
 
 
 ## get the list of residues in the 5 angstom zone around selected residue
