@@ -24,6 +24,7 @@ ROTA_PROB_THRESHOLD = config["ROTA_PROB_THRESHOLD"]
 MIN_NUM_ROTA = config["MIN_NUM_ROTA"]
 NUM_MINIM_STEP = config["NUM_MINIM_STEP"]
 minimize = config["minimize"]
+output_folder = config["output_folder"]
 
 
 ##### FONCTIONS #####
@@ -117,7 +118,7 @@ d = {'Cys': 'C', 'Asp': 'D', 'Ser': 'S', 'Gln': 'Q', 'Lys': 'K',
 
 ##### PRINCIPAL #####
 
-f = open(d[preAA]+posAA+d[newAA]+".txt","a")
+f = open(output_folder+"/"+d[preAA]+posAA+d[newAA]+".txt","a")
 ## we open chimera for the first time to get the rotamers and their probabilities of the mutated AA
 chimera.openModels.open(pdb_file)
 r,proba_rotamer = get_rota(newAA,posAA)
@@ -170,7 +171,7 @@ if minimize :
             clashes_of_rota_after.append(clashes("clash_post{}.txt".format(i+1),posAA))
         else:
             clashes_of_rota_after.append(0)
-    f.write("Nombre de clash des rotamers apres minimisation : "+str(clashes_of_rota_after))
+    f.write("Nombre de clash des rotamers apres minimisation : "+str(clashes_of_rota_after)+"\n")
 
 
 

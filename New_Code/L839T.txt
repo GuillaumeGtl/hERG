@@ -1,4 +1,0 @@
-Mutation : L839T
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 0
