@@ -1,0 +1,10 @@
+Mutation : A57P
+Score taille : 0
+Score hydrophobicite : 0
+Score charge : 0
+proba rota : [0.8135679960250854, 0.18643200397491455]
+Nombre de rotamers interessants : 2
+Nombre de clash des rotamers : [0, 0]
+Acide amines en contact avec les rotames : [['55', '56'], ['55', '56', '58']]
+Liste fusionne des contacts : ['55', '56', '58']
+Nombre de clash des rotamers apres minimisation : [0, 0]

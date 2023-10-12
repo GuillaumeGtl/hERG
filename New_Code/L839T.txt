@@ -1,7 +1,4 @@
-residue : THR 839.A
-proba rota : [0.877921998500824, 0.1137159988284111, 0.0083619998767972]
-Nombre de rotamers interessants : 2
-Nombre de clash des rotamers : [0, 0]
-Acide amines en contact avec les rotames : [['835', '843', '841', '842', '809'], ['835', '843', '809', '840', '841', '842']]
-Liste fusionne des contacts : ['843', '842', '841', '835', '840', '809']
-Nombre de clash des rotamers apres minimisation : [0, 0]
+Mutation : L839T
+Score taille : 0
+Score hydrophobicite : 0
+Score charge : 0

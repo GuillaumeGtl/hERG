@@ -52,7 +52,7 @@ def read_xlsx(xlsx_name):
         mini.append(input_df[i][5])
         c4.append(input_df[i][6])
         total.append(input_df[i][7])
-        AA_imp.append(input_df[i][7])
+        AA_imp.append(input_df[i][8])
     ## optional
     mutations_read=pd.DataFrame()
     mutations_read["pre_aa"] = pre_aa 
@@ -60,3 +60,24 @@ def read_xlsx(xlsx_name):
     mutations_read["post_aa"] = post_aa 
     return pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_imp
 
+def write_xlsx(xlsx_name,mutation,critere,value):
+    wb = openpyxl.load_workbook(xlsx_name)
+    ws = wb._sheets[0]
+    rows = [cell.value for cell in ws[1]]
+    colonne = rows.index(mutation)
+    column = [cell.value for cell in ws["A"]]
+    ligne = column.index(critere)
+    if type(value) != int and type(value) != float:
+        value = str(value)
+    ws[ligne+1][colonne].value = value
+    wb.save(xlsx_name)
+    
+    
+    
+    
+
+
+
+
+
+    

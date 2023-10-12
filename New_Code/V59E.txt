@@ -1,0 +1,4 @@
+Mutation : V59E
+Score taille : 0
+Score hydrophobicite : 2
+Score charge : 1

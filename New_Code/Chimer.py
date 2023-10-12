@@ -117,7 +117,7 @@ d = {'Cys': 'C', 'Asp': 'D', 'Ser': 'S', 'Gln': 'Q', 'Lys': 'K',
 
 ##### PRINCIPAL #####
 
-f = open(d[preAA]+posAA+d[newAA]+".txt","w")
+f = open(d[preAA]+posAA+d[newAA]+".txt","a")
 ## we open chimera for the first time to get the rotamers and their probabilities of the mutated AA
 chimera.openModels.open(pdb_file)
 r,proba_rotamer = get_rota(newAA,posAA)
