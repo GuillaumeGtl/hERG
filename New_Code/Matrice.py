@@ -38,13 +38,25 @@ def read_xlsx(xlsx_name):
     input_df = pd.read_excel(xlsx_name, header=None)
     nb_mut = len(input_df.columns)
     pre_aa, pos, post_aa = [], [], []
+    c1, c2, c3, c4 = [], [], [], []
+    clash, mini = [], []
+    total, AA_imp = [], []   
     for i in range(1,nb_mut):
         pre_aa.append(input_df[i][0][0])
         pos.append(input_df[i][0][1:-1]) 
         post_aa.append(input_df[i][0][-1:])
+        c1.append(input_df[i][1])
+        c2.append(input_df[i][2])
+        c3.append(input_df[i][3])
+        clash.append(input_df[i][4])
+        mini.append(input_df[i][5])
+        c4.append(input_df[i][6])
+        total.append(input_df[i][7])
+        AA_imp.append(input_df[i][7])
     ## optional
     mutations_read=pd.DataFrame()
     mutations_read["pre_aa"] = pre_aa 
     mutations_read["pos"] = pos 
     mutations_read["post_aa"] = post_aa 
-    return mutations_read
+    return pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_imp
+
