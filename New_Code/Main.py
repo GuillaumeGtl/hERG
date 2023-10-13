@@ -35,7 +35,7 @@ config["ROTA_PROB_THRESHOLD"] = 0.1
 config["MIN_NUM_ROTA"] = 3
 
 ## le nombre de pas de minimisation
-config["NUM_MINIM_STEP"] = 10
+config["NUM_MINIM_STEP"] = 0
 
 
 
@@ -68,8 +68,11 @@ def crit4(file):
         L = ligne.split(" : ")
         if L[0] == 'proba rota':
             proba_rota = L[1].strip()
+            if proba_rota == "[]":
+                return 0
             proba_rota = proba_rota.strip('][').split(", ")
         if L[0] == 'Nombre de clash des rotamers':
+            
             clash = L[1].strip()
             clash = clash.strip('][').split(", ")
         if L[0] == 'Nombre de clash des rotamers apres minimisation':
@@ -109,6 +112,8 @@ def get_contactAA(file):
         L = ligne.split(" : ")
         if L[0] == 'Liste fusionne des contacts':
             AA = L[1].strip()
+            if AA == "[]":
+                return AA
             AA = AA.strip("][").split(", ")
             AA = [int(j) for j in [i.strip("'") for i in AA]]
     return AA
@@ -146,8 +151,14 @@ for i in range(len(pre_aa)):
         f.close()
         subprocess.run(cmd)
         clash[i],mini[i] = get_clash(config["output_folder"]+"/"+mutation+".txt")
-        clash[i] = [int(j) for j in clash[i]]
-        mini[i] = [int(j) for j in mini[i]]
+        if clash[i] == [""]:
+            clash[i] = "no rotamers"
+        else :
+            clash[i] = [int(j) for j in clash[i]]
+        if mini[i] == [""]:
+            mini[i] = "no rotamers"
+        else :
+            mini[i] = [int(j) for j in mini[i]]
         write_xlsx(config["mutation_file"],mutation,"clash",clash[i])
         write_xlsx(config["mutation_file"],mutation,"minimisation",mini[i])
     log = open(config["output_folder"]+"/"+mutation+".txt","a")
