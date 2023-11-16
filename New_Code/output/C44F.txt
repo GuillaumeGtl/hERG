@@ -1,0 +1,8 @@
+Mutation : C44F
+Score taille : 1
+Score hydrophobicite : 0
+Score charge : 0
+Score mutagenese :2
+Score total :3
+Liste des AA importants en contact avec au moins un rotamere : [56, 59, 49, 54, 45, 43, 30]
+nombre d'AA importants en contact avec au moins un rotamere : 7

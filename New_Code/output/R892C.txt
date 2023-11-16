@@ -1,0 +1,4 @@
+Mutation : R892C
+Score taille : 1
+Score hydrophobicite : 2
+Score charge : 1

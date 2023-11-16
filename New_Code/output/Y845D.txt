@@ -1,0 +1,8 @@
+Mutation : Y845D
+Score taille : 1
+Score hydrophobicite : 0
+Score charge : 1
+Score mutagenese :0.804899532348238
+Score total :2.804899532348238
+Liste des AA importants en contact avec au moins un rotamere : [846]
+nombre d'AA importants en contact avec au moins un rotamere : 1

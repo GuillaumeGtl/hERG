@@ -1,0 +1,8 @@
+Mutation : Y597H
+Score taille : 0
+Score hydrophobicite : 0
+Score charge : 1
+Score mutagenese :2
+Score total :3
+Liste des AA importants en contact avec au moins un rotamere : [605, 604, 595, 596]
+nombre d'AA importants en contact avec au moins un rotamere : 4

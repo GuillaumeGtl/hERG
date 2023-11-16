@@ -1,0 +1,8 @@
+Mutation : C49R
+Score taille : 1
+Score hydrophobicite : 2
+Score charge : 1
+Score mutagenese :2
+Score total :6
+Liste des AA importants en contact avec au moins un rotamere : [56, 55, 54, 44, 45, 51, 53]
+nombre d'AA importants en contact avec au moins un rotamere : 7

@@ -1,0 +1,8 @@
+Mutation : C66Y
+Score taille : 1
+Score hydrophobicite : 0
+Score charge : 0
+Score mutagenese :2
+Score total :3
+Liste des AA importants en contact avec au moins un rotamere : [59, 54, 30, 41, 64, 65, 70, 68, 69]
+nombre d'AA importants en contact avec au moins un rotamere : 9

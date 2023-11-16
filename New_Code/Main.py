@@ -26,7 +26,18 @@ config["Chimer_file"] = "C:/Users/Guillaume/Desktop/hERG/New_Code/Chimer.py"
 config["output_folder"] = "C:/Users/Guillaume/Desktop/hERG/New_Code/output"
 
 ## le chemin d'accès au fichier de la liste des AA importants
-AA_important = [16, 20, 26, 28, 29, 30, 31, 32, 33, 41, 42, 43, 44, 45, 47, 49, 53, 53, 54, 55, 56, 58, 58, 58, 64, 64, 66, 68, 71, 72, 74, 74, 74, 78, 86, 86, 94, 96, 98, 99, 100, 101, 106, 108, 114, 124, 148, 176, 215, 306, 312, 320, 328, 400, 402, 410, 413, 420, 421, 422, 426, 427, 427, 427, 431, 451, 456, 460, 463, 466, 470, 473, 474, 475, 490, 492, 493, 493, 501, 501, 525, 528, 531, 531, 534, 534, 552, 558, 558, 559, 561, 561, 561, 562, 562, 564, 565, 566, 568, 568, 569, 571, 571, 572, 572, 572, 572, 572, 575, 582, 582, 584, 585, 593, 593, 593, 597, 601, 604, 605, 609, 611, 613, 614, 615, 615, 616, 621, 621, 622, 623, 625, 626, 626, 626, 626, 627, 628, 628, 629, 629, 629, 629, 629, 630, 630, 632, 633, 634, 635, 635, 637, 637, 637, 638, 638, 640, 640, 641, 644, 644, 645, 645, 645, 648, 649, 656, 657, 657, 660, 662, 687, 693, 696, 696, 706, 706, 711, 721, 728, 744, 749, 752, 752, 757, 767, 770, 774, 784, 785, 788, 788, 791, 800, 805, 805, 806, 818, 818, 820, 822, 823, 835, 837, 861, 861, 885, 894, 1049, 1066, 1157]
+AA_important = [1, 15, 19, 20, 26, 28, 29, 30, 31, 32, 33, 41, 42, 43, 44, 45, 47, 49,
+51, 53, 54, 55, 56, 58, 59, 64, 65, 66, 68, 69, 70, 71, 72, 74, 78, 79,
+80, 82, 85, 86, 87, 92, 96, 98, 99, 100, 101, 102, 106, 108, 111, 114,
+124, 306, 342, 400, 402, 410, 412, 413, 420, 421, 422, 427, 428, 429,
+430, 463, 470, 472, 473, 474, 475, 483, 488, 490, 492, 493, 501, 528,
+531, 534, 535, 537, 546, 551, 552, 553, 554, 555, 558, 559, 561, 562,
+563, 564, 565, 566, 568, 570, 571, 572, 575, 582, 584, 585, 588, 591,
+593, 594, 595, 596, 597, 601, 604, 605, 609, 610, 611, 613, 614, 615,
+616, 617, 618, 620, 621, 622, 623, 625, 626, 627, 628, 629, 630, 631,
+632, 633, 634, 635, 637, 638, 640, 641, 642, 644, 645, 649, 651, 657,
+658, 660, 662, 696, 721, 732, 752, 783, 784, 788, 805, 806, 818, 822,
+823, 828, 833, 835, 837, 845, 846, 996]
 
 ## le pourcentage au dessus duquel on considère le rotamère intéressant
 config["ROTA_PROB_THRESHOLD"] = 0.1
@@ -35,7 +46,7 @@ config["ROTA_PROB_THRESHOLD"] = 0.1
 config["MIN_NUM_ROTA"] = 3
 
 ## le nombre de pas de minimisation
-config["NUM_MINIM_STEP"] = 0
+config["NUM_MINIM_STEP"] = 20
 
 
 
@@ -121,7 +132,7 @@ def get_contactAA(file):
 subprocess.run(cmd)
 """
 
-pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_imp =  read_xlsx(config["mutation_file"])
+pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_imp,nb_AA_imp = read_xlsx(config["mutation_file"])
 M = matrices(config["matrix_file"])
 for i in range(len(pre_aa)):
     config["preAA"] = d[pre_aa[i]]
@@ -174,6 +185,10 @@ for i in range(len(pre_aa)):
         AA_imp[i] = [aa for aa in get_contactAA(config["output_folder"]+"/"+mutation+".txt") if aa in AA_important]
         write_xlsx(config["mutation_file"],mutation,"AA_important en contact",AA_imp[i])
     log.write("Liste des AA importants en contact avec au moins un rotamere : "+str(AA_imp[i])+"\n")
+    if type(nb_AA_imp[i]) == float and math.isnan(nb_AA_imp[i]):
+        nb_AA_imp[i] = len(AA_imp[i])
+        write_xlsx(config["mutation_file"],mutation,"nombre AA important",nb_AA_imp[i])
+    log.write("nombre d'AA importants en contact avec au moins un rotamere : "+str(nb_AA_imp[i])+"\n")
     log.close()
 
 

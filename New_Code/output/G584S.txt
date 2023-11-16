@@ -1,0 +1,8 @@
+Mutation : G584S
+Score taille : 1
+Score hydrophobicite : 0
+Score charge : 0
+Score mutagenese :1
+Score total :2
+Liste des AA importants en contact avec au moins un rotamere : [585, 634, 637, 588]
+nombre d'AA importants en contact avec au moins un rotamere : 4

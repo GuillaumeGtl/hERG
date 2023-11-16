@@ -1,0 +1,8 @@
+Mutation : R531T
+Score taille : 1
+Score hydrophobicite : 1
+Score charge : 1
+Score mutagenese :1
+Score total :4
+Liste des AA importants en contact avec au moins un rotamere : [463, 534, 421, 528]
+nombre d'AA importants en contact avec au moins un rotamere : 4

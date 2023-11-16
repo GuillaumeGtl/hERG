@@ -1,0 +1,8 @@
+Mutation : G806R
+Score taille : 2
+Score hydrophobicite : 2
+Score charge : 1
+Score mutagenese :2
+Score total :7
+Liste des AA importants en contact avec au moins un rotamere : [833, 805]
+nombre d'AA importants en contact avec au moins un rotamere : 2

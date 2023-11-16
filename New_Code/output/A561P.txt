@@ -1,0 +1,8 @@
+Mutation : A561P
+Score taille : 0
+Score hydrophobicite : 0
+Score charge : 0
+Score mutagenese :1
+Score total :1
+Liste des AA importants en contact avec au moins un rotamere : [622, 618, 559, 558, 563, 564, 565, 562]
+nombre d'AA importants en contact avec au moins un rotamere : 8

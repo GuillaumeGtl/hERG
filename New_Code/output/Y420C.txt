@@ -1,0 +1,8 @@
+Mutation : Y420C
+Score taille : 1
+Score hydrophobicite : 0
+Score charge : 0
+Score mutagenese :0
+Score total :1
+Liste des AA importants en contact avec au moins un rotamere : [422]
+nombre d'AA importants en contact avec au moins un rotamere : 1

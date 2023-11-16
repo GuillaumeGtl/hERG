@@ -1,0 +1,8 @@
+Mutation : R534L
+Score taille : 0
+Score hydrophobicite : 2
+Score charge : 1
+Score mutagenese :1.184022168236684
+Score total :4.184022168236684
+Liste des AA importants en contact avec au moins un rotamere : [463, 537, 531, 501]
+nombre d'AA importants en contact avec au moins un rotamere : 4
