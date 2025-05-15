@@ -1,8 +1,0 @@
-Mutation : G626R
-Score taille : 2
-Score hydrophobicite : 2
-Score charge : 1
-Score mutagenese :1
-Score total :6
-Liste des AA importants en contact avec au moins un rotamere : [621, 620, 645, 625, 632, 617]
-nombre d'AA importants en contact avec au moins un rotamere : 6

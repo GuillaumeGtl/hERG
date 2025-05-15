@@ -1,8 +1,0 @@
-Mutation : E637Q
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 1
-Score mutagenese :1.31254666568511
-Score total :2.31254666568511
-Liste des AA importants en contact avec au moins un rotamere : [568, 632, 633, 634, 584, 617, 641, 640, 585]
-nombre d'AA importants en contact avec au moins un rotamere : 9

@@ -1,8 +1,0 @@
-Mutation : L127F
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :0.2611893826767232
-Score total :0.2611893826767232
-Liste des AA importants en contact avec au moins un rotamere : [30, 29, 64, 111, 86]
-nombre d'AA importants en contact avec au moins un rotamere : 5

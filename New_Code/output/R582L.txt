@@ -1,4 +1,0 @@
-Mutation : R582L
-Score taille : 0
-Score hydrophobicite : 2
-Score charge : 1

@@ -1,8 +1,0 @@
-Mutation : R100G
-Score taille : 2
-Score hydrophobicite : 2
-Score charge : 1
-Score mutagenese :0
-Score total :5
-Liste des AA importants en contact avec au moins un rotamere : []
-nombre d'AA importants en contact avec au moins un rotamere : 0

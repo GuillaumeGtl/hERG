@@ -1,8 +1,0 @@
-Mutation : N45K
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 1
-Score mutagenese :2
-Score total :4
-Liste des AA importants en contact avec au moins un rotamere : [49, 19, 47, 44, 29, 43]
-nombre d'AA importants en contact avec au moins un rotamere : 6

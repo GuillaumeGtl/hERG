@@ -1,8 +1,0 @@
-Mutation : W585C
-Score taille : 2
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :1
-Score total :3
-Liste des AA importants en contact avec au moins un rotamere : [568, 631, 632, 637, 588]
-nombre d'AA importants en contact avec au moins un rotamere : 5

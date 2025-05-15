@@ -1,8 +1,0 @@
-Mutation : G604S
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :0.4258645715615833
-Score total :1.425864571561583
-Liste des AA importants en contact avec au moins un rotamere : [605, 595, 597]
-nombre d'AA importants en contact avec au moins un rotamere : 3

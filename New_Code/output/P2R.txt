@@ -1,4 +1,0 @@
-Mutation : P2R
-Score taille : 1
-Score hydrophobicite : 2
-Score charge : 1

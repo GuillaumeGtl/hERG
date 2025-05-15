@@ -1,8 +1,0 @@
-Mutation : I82M
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :1
-Score total :1
-Liste des AA importants en contact avec au moins un rotamere : [70, 98, 80, 96, 86, 79, 85]
-nombre d'AA importants en contact avec au moins un rotamere : 7

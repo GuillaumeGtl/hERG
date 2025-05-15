@@ -1,8 +1,0 @@
-Mutation : V59E
-Score taille : 0
-Score hydrophobicite : 2
-Score charge : 1
-Score mutagenese :0
-Score total :3
-Liste des AA importants en contact avec au moins un rotamere : [55, 54, 44, 56]
-nombre d'AA importants en contact avec au moins un rotamere : 4

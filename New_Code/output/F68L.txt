@@ -1,8 +1,0 @@
-Mutation : F68L
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :2
-Score total :2
-Liste des AA importants en contact avec au moins un rotamere : [54, 70]
-nombre d'AA importants en contact avec au moins un rotamere : 2

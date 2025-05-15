@@ -1,4 +1,0 @@
-Mutation : R164H
-Score taille : 0
-Score hydrophobicite : 1
-Score charge : 0

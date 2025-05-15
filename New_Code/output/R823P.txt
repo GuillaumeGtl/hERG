@@ -1,8 +1,0 @@
-Mutation : R823P
-Score taille : 1
-Score hydrophobicite : 2
-Score charge : 1
-Score mutagenese :1
-Score total :5
-Liste des AA importants en contact avec au moins un rotamere : [788, 822]
-nombre d'AA importants en contact avec au moins un rotamere : 2

@@ -1,8 +1,0 @@
-Mutation : S606F
-Score taille : 1
-Score hydrophobicite : 1
-Score charge : 0
-Score mutagenese :0
-Score total :2
-Liste des AA importants en contact avec au moins un rotamere : [595, 610, 609]
-nombre d'AA importants en contact avec au moins un rotamere : 3

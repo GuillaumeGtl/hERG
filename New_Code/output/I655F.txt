@@ -1,8 +1,0 @@
-Mutation : I655F
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :2
-Score total :2
-Liste des AA importants en contact avec au moins un rotamere : [554, 553, 657, 651, 658]
-nombre d'AA importants en contact avec au moins un rotamere : 5

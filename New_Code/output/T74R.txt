@@ -1,8 +1,0 @@
-Mutation : T74R
-Score taille : 1
-Score hydrophobicite : 1
-Score charge : 1
-Score mutagenese :2
-Score total :5
-Liste des AA importants en contact avec au moins un rotamere : [79, 99, 98, 72, 71, 70, 82, 69, 96]
-nombre d'AA importants en contact avec au moins un rotamere : 9

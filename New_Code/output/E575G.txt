@@ -1,8 +1,0 @@
-Mutation : E575G
-Score taille : 1
-Score hydrophobicite : 1
-Score charge : 1
-Score mutagenese :0
-Score total :3
-Liste des AA importants en contact avec au moins un rotamere : []
-nombre d'AA importants en contact avec au moins un rotamere : 0

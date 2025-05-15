@@ -1,8 +1,0 @@
-Mutation : M554T
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :0
-Score total :0
-Liste des AA importants en contact avec au moins un rotamere : [558, 555, 551, 552]
-nombre d'AA importants en contact avec au moins un rotamere : 4

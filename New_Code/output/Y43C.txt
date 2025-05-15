@@ -1,8 +1,0 @@
-Mutation : Y43C
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :0.6531833645798854
-Score total :1.653183364579885
-Liste des AA importants en contact avec au moins un rotamere : [31, 30, 42, 41, 44]
-nombre d'AA importants en contact avec au moins un rotamere : 5

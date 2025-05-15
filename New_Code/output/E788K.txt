@@ -1,8 +1,0 @@
-Mutation : E788K
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 2
-Score mutagenese :2
-Score total :4
-Liste des AA importants en contact avec au moins un rotamere : [823, 822]
-nombre d'AA importants en contact avec au moins un rotamere : 2

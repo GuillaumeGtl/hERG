@@ -1,8 +1,0 @@
-Mutation : C52Y
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :2
-Score total :3
-Liste des AA importants en contact avec au moins un rotamere : [54, 51, 99, 98, 69, 68, 100, 101, 106]
-nombre d'AA importants en contact avec au moins un rotamere : 9

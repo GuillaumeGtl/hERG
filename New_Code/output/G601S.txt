@@ -1,4 +1,0 @@
-Mutation : G601S
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 0

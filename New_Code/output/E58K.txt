@@ -1,8 +1,0 @@
-Mutation : E58K
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 2
-Score mutagenese :1
-Score total :3
-Liste des AA importants en contact avec au moins un rotamere : [56, 54, 101]
-nombre d'AA importants en contact avec au moins un rotamere : 3

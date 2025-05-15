@@ -1,8 +1,0 @@
-Mutation : G572C
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :1.721579641319341
-Score total :2.721579641319341
-Liste des AA importants en contact avec au moins un rotamere : [568, 585, 570, 575]
-nombre d'AA importants en contact avec au moins un rotamere : 4

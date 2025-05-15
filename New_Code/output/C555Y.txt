@@ -1,8 +1,0 @@
-Mutation : C555Y
-Score taille : 1
-Score hydrophobicite : 0
-Score charge : 0
-Score mutagenese :1.788734569402366
-Score total :2.788734569402366
-Liste des AA importants en contact avec au moins un rotamere : [559, 558, 551]
-nombre d'AA importants en contact avec au moins un rotamere : 3

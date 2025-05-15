@@ -1,8 +1,0 @@
-Mutation : E698K
-Score taille : 0
-Score hydrophobicite : 0
-Score charge : 2
-Score mutagenese :1
-Score total :3
-Liste des AA importants en contact avec au moins un rotamere : []
-nombre d'AA importants en contact avec au moins un rotamere : 0
