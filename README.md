@@ -7,3 +7,5 @@ Python_version : 3.12
 -For new variant analysis, you have to input your mutation in the mutation.xlsx file with the format 1LetterResidue1Letter in the first row of each columns starting from B1.
 
 -The 27 lines of results are describe in the paper.
+
+modif
