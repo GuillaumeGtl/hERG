@@ -135,7 +135,7 @@ if not nb_of_interest_rot:
 
 if not len(proba_rotamer):
     nb_of_interest_rot = 0
-f.write("Nombre de rotamers interessants : "+str(nb_of_interest_rot)+"\n")
+f.write("Number of rotamers of interest : "+str(nb_of_interest_rot)+"\n")
 
 
 # get the numbers of clashes and contacts for each intersting rotamers
@@ -148,8 +148,8 @@ for i in range(nb_of_interest_rot):
     clash(newAA,posAA,str(i+1),-0.4,0,"contact")
     contacts_of_rota.append(contacts("contact{}.txt".format(i+1),posAA))
 rc("close session")
-f.write("Nombre de clash des rotamers : "+str(clashes_of_rota)+"\n")
-f.write("Acide amines en contact avec les rotames : "+str(contacts_of_rota)+"\n")
+f.write("Number of clashes of rotamers : "+str(clashes_of_rota)+"\n")
+f.write("Amino acids in contact with rotamers : "+str(contacts_of_rota)+"\n")
 
 # create the list of all AA in contact with at least 1 intersting rotamers
 fused_contacts_of_rota = []
@@ -157,7 +157,7 @@ for i in range(len(contacts_of_rota)):
     l1 = fused_contacts_of_rota
     l2 = contacts_of_rota[i]
     fused_contacts_of_rota = list(set(l1)|set(l2))
-f.write("Liste fusionne des contacts : "+str(fused_contacts_of_rota)+"\n")
+f.write("Merged list of contacts : "+str(fused_contacts_of_rota)+"\n")
 
 
 # if minimize, minimize the structure for each rotamer having clash, and get the new number of clashes
@@ -171,7 +171,7 @@ if minimize :
             clashes_of_rota_after.append(clashes("clash_post{}.txt".format(i+1),posAA))
         else:
             clashes_of_rota_after.append(0)
-    f.write("Nombre de clash des rotamers apres minimisation : "+str(clashes_of_rota_after)+"\n")
+    f.write("Number of clashes of rotamers after minimisation : "+str(clashes_of_rota_after)+"\n")
 
 
 
