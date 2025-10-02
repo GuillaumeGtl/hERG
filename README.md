@@ -35,7 +35,11 @@ number of important contact AA: number of residues known for being important for
 rotaX proba: probability of the Xth rotamer
 
 number of rotaX contact: number of residues considered in contact with the Xth rotamer
+
 number of important rotaX contact: number of residues known for being important for the protein considered in contact with the Xth rotamer
+
 criteriaE: number of important rotaX contact/number of rotaX contact * rotaX proba  
+
 final score : sum of criteria A to E
+
 Structural Pathogenicity Score: simplified score of pathogenicity of the mutation ranging from 1 (not pathogenic) to 5(very pathogenic)
