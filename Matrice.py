@@ -54,6 +54,7 @@ def read_xlsx(xlsx_name):
     pr3,ncr3,ncir3 = [], [], []
     pr4,ncr4,ncir4 = [], [], []
     pr5,ncr5,ncir5 = [], [], []
+    final_score,sps = [], []
     for i in range(1,nb_mut):
         mut = input_df[i][0].strip()
         pre_aa.append(mut[0])
@@ -86,11 +87,13 @@ def read_xlsx(xlsx_name):
         ncr5.append(input_df[i][25])
         ncir5.append(input_df[i][26])
         c5.append(input_df[i][27])
+        final_score.append(input_df[i][28])
+        sps.append(input_df[i][29])
     mutations_read=pd.DataFrame()
     mutations_read["pre_aa"] = pre_aa 
     mutations_read["pos"] = pos 
     mutations_read["post_aa"] = post_aa 
-    return pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_con,nb_AA_con,AA_imp,nb_AA_imp,pr1,ncr1,ncir1,pr2,ncr2,ncir2,pr3,ncr3,ncir3,pr4,ncr4,ncir4,pr5,ncr5,ncir5,c5
+    return pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_con,nb_AA_con,AA_imp,nb_AA_imp,pr1,ncr1,ncir1,pr2,ncr2,ncir2,pr3,ncr3,ncir3,pr4,ncr4,ncir4,pr5,ncr5,ncir5,c5,final_score,sps
 
 def write_xlsx(xlsx_name,mutation,critere,value):
     wb = openpyxl.load_workbook(xlsx_name)

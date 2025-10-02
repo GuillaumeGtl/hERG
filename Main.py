@@ -14,7 +14,7 @@ config["path_chimera"] = "C:/Program Files/Chimera 1.16/bin/chimera.exe"
 config["pdb_file"] = "C:/Users/Guillaume/Desktop/Nouveau dossier/hERG/hERG.pdb"
 
 ## mutation to be studied path (xlsx file)
-config["mutation_file"] = "C:/Users/Guillaume/Desktop/Nouveau dossier/hERG/ClinVar variants.xlsx"
+config["mutation_file"] = "C:/Users/Guillaume/Desktop/Nouveau dossier/hERG/mutation.xlsx"
 
 ## scoring matrices path (xlsx file)
 config["matrix_file"] = "C:/Users/Guillaume/Desktop/Nouveau dossier/hERG/matrices.xlsx"
@@ -97,7 +97,7 @@ def crit4(file):
     for i in range(len(clash)):
         score += (int(float(clash[i])>0) + int(float(clash_post[i])>0))*float(proba_rota[i])
     score = score/protot if protot else 0
-    return score
+    return score/2
         
 def get_clash(file):
     """
@@ -202,7 +202,7 @@ if not os.path.isfile(config["res_index"]):
 res_index_dict = get_res_index(config["res_index"])
 
 ## récupérattion des mutations et résulats correspondants de l'excel
-pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_con,nb_AA_con,AA_imp,nb_AA_imp,pr1,ncr1,ncir1,pr2,ncr2,ncir2,pr3,ncr3,ncir3,pr4,ncr4,ncir4,pr5,ncr5,ncir5,c5 = read_xlsx(config["mutation_file"])
+pre_aa,pos,post_aa,c1,c2,c3,clash,mini,c4,total,AA_con,nb_AA_con,AA_imp,nb_AA_imp,pr1,ncr1,ncir1,pr2,ncr2,ncir2,pr3,ncr3,ncir3,pr4,ncr4,ncir4,pr5,ncr5,ncir5,c5,final_score,sps = read_xlsx(config["mutation_file"])
 
 ## récupération des matrices de score 
 M = matrices(config["matrix_file"])
@@ -224,19 +224,19 @@ for i in range(len(pre_aa)):
     # si le critère 1 est vide, on le complete 
     if type(c1[i])==float and math.isnan(c1[i]):
         c1[i] = M[0][config["preAA"]][config["newAA"]]
-        write_xlsx(config["mutation_file"],mutation,"criteria1",c1[i])
+        write_xlsx(config["mutation_file"],mutation,"criteriaA",c1[i])
     log.write("Size score : "+str(c1[i])+"\n")
 
     # idem critère 2
     if type(c2[i])==float and math.isnan(c2[i]):
         c2[i] = M[1][config["preAA"]][config["newAA"]]
-        write_xlsx(config["mutation_file"],mutation,"criteria2",c2[i])
+        write_xlsx(config["mutation_file"],mutation,"criteriaB",c2[i])
     log.write("Hydrophobicity score : "+str(c2[i])+"\n")
 
     # idem critère 3
     if type(c3[i])==float and math.isnan(c3[i]):
         c3[i] = M[2][config["preAA"]][config["newAA"]]
-        write_xlsx(config["mutation_file"],mutation,"criteria3",c3[i])
+        write_xlsx(config["mutation_file"],mutation,"criteriaC",c3[i])
     log.write("Charge score : "+str(c3[i])+"\n")
 
     
@@ -246,6 +246,10 @@ for i in range(len(pre_aa)):
             total[i] = c1[i]+c2[i]+c3[i]
             write_xlsx(config["mutation_file"],mutation,"total",total[i])
         log.write("Total score:"+str(total[i])+"\n")
+        if type(final_score[i])==float and math.isnan(final_score[i]):
+            final_score[i] = total[i]
+            write_xlsx(config["mutation_file"],mutation,"final score",final_score[i])
+        log.write("Final score:"+str(final_score[i])+"\n")
         log.close()
     else :
         log.close()
@@ -274,7 +278,7 @@ for i in range(len(pre_aa)):
         # idem critère 4
         if type(c4[i])==float and math.isnan(c4[i]):
             c4[i] = crit4(config["output_folder"]+"/"+mutation+".txt")
-            write_xlsx(config["mutation_file"],mutation,"criteria4",c4[i])
+            write_xlsx(config["mutation_file"],mutation,"criteriaD",c4[i])
         log.write("Mutagenesis score :"+str(c4[i])+"\n")
 
         # idem score total
@@ -310,7 +314,7 @@ for i in range(len(pre_aa)):
             nb_AA_imp[i] = len(eval(AA_imp[i]))
             write_xlsx(config["mutation_file"],mutation,"number of important contact AA",nb_AA_imp[i])
         log.write("Number of important AA in contact with at least one of the rotamers : "+str(nb_AA_imp[i])+"\n")
-        log.close()
+        
         if clash[i] == 'no rotamers':
             nb_of_rotamers = 0
         else : 
@@ -402,5 +406,13 @@ for i in range(len(pre_aa)):
                 c5[i] += (int(ncir4[i])/max(1,int(ncr4[i])))*float(pr4[i])
             if flags[4]:
                 c5[i] += (int(ncir5[i])/max(1,int(ncr5[i])))*float(pr5[i])
-            c5[i] = c5[i]*2
-            write_xlsx(config["mutation_file"],mutation,"criteria5",c5[i])
+            c5[i] = c5[i]
+            write_xlsx(config["mutation_file"],mutation,"criteriaE",c5[i])
+        if type(final_score[i])==float and math.isnan(final_score[i]):
+            final_score[i] = total[i] + c4[i] +c5[i]
+            write_xlsx(config["mutation_file"],mutation,"final score",final_score[i])
+        log.write("Final score:"+str(final_score[i])+"\n")
+        log.close()
+    if type(sps[i])==float and math.isnan(sps[i]):
+        sps[i] = 1 + round(final_score[i] / 3.29882895 * 4 * 4, 0) / 4
+        write_xlsx(config["mutation_file"],mutation,"Structural Pathogenicity Score",sps[i])
